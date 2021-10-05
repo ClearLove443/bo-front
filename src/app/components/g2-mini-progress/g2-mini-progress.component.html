@@ -1,0 +1,27 @@
+<nz-tooltip>
+  <div
+    nz-tooltip
+    [nzTooltipTitle]="'目標値：' + target + '%'"
+    class="g2-mini-progress__target"
+    [ngStyle]="{ 'left.%': target }"
+  >
+    <span
+      class="g2-mini-progress__target-item"
+      [ngStyle]="{ 'background-color': color }"
+    ></span>
+    <span
+      class="g2-mini-progress__target-item"
+      [ngStyle]="{ 'background-color': color }"
+    ></span>
+  </div>
+</nz-tooltip>
+<div class="g2-mini-progress__wrap">
+  <div
+    class="g2-mini-progress__value"
+    [ngStyle]="{
+      'background-color': color,
+      'width.%': percent,
+      'height.px': strokeWidth
+    }"
+  ></div>
+</div>
