@@ -1,0 +1,16 @@
+.bst-header-icon {
+  display: inline-block;
+  height: 100%;
+  padding: 0 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.bst-header-icon:hover {
+  background-color: rgba(0, 0, 0, 0.025);
+}
+
+.bst-badge {
+  padding: 8px 2px;
+}

@@ -1,13 +1,13 @@
 production: false
 
 apiUrl:
-  auth: 'http://localhost:3000/auth'
-  address: 'http://localhost:3000/address'
-  charts: 'http://localhost:3000/charts'
-  chat: 'http://localhost:3000/chat'
+  auth: "http://localhost:3000/auth"
+  address: "http://localhost:3000/address"
+  charts: "http://localhost:3000/charts"
+  chat: "http://localhost:3000/chat"
 
 network:
   timeout: 15000
 
 logLevel:
-  console: 'INFO'
+  console: "INFO"

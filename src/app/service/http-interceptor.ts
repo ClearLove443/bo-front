@@ -57,8 +57,9 @@ export class WebAppHttpInterceptor implements HttpInterceptor {
     // Get the auth token from the service.
     // const authToken = this.auth.getAuthorizationToken();
 
-    const authToken = '';
+    const authToken = localStorage.getItem('token');
 
+    // alert(targetUrl + authToken);
     // Clone the request and replace the original headers with
     // cloned headers, updated with the authorization.
     const defReq = req.clone({

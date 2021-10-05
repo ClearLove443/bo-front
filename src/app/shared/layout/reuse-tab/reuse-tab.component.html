@@ -1,0 +1,56 @@
+<ul nz-menu [nzMode]="'horizontal'" class="bst-tab" id="__tab">
+  <li
+    nz-menu-item
+    *ngFor="let tabItem of tabItemShowList; let i = index"
+    [nzSelected]="tabItem.isSelect"
+    class="bst-tab-item"
+    (click)="tabItemShowSelect($event, i)"
+    (mouseover)="showClose('__tabItemShow', i)"
+    (mouseout)="hideClose('__tabItemShow', i)"
+  >
+    {{ tabItem.title }}
+    <i
+      nz-icon
+      nzType="close"
+      id="{{ '__tabItemShow' + i }}"
+      class="bst-tab-item-close"
+      nzTheme="outline"
+      (click)="closeTab(tabItem.module, true, $event)"
+    ></i>
+  </li>
+</ul>
+
+<a
+  nz-dropdown
+  [nzDropdownMenu]="menu"
+  style="float:right;padding:0 12px;
+"
+  *ngIf="isCollapsedTab"
+>
+  <i nz-icon nzType="menu-fold"></i>
+</a>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu nzSelectable>
+    <li
+      nz-menu-item
+      *ngFor="let tabItem of tabItemCollapsedList; let i = index"
+      [nzSelected]="tabItem.isSelect"
+      class="bst-tab-item-collapsed"
+      (click)="tabItemCollapsedSelect($event, i)"
+      (mouseover)="showClose('__tabItemCollapsed', i)"
+      (mouseout)="hideClose('__tabItemCollapsed', i)"
+    >
+      {{ tabItem.title }}
+      <i
+        nz-icon
+        nzType="close"
+        id="{{ '__tabItemCollapsed' + i }}"
+        style="float: right;line-height: 28px;
+"
+        class="bst-tab-item-close"
+        nzTheme="outline"
+        (click)="closeTab(tabItem.module, true, $event)"
+      ></i>
+    </li>
+  </ul>
+</nz-dropdown-menu>

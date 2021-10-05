@@ -1,4 +1,5 @@
 import * as jsyaml from 'js-yaml';
+import { IEnvironment } from './environment.model';
 
 /**
  * Environment Util
@@ -7,7 +8,7 @@ import * as jsyaml from 'js-yaml';
  * @class StorageUtil
  */
 export class EnvUtil {
-  public static env: any;
+  public static env: IEnvironment;
 
   /**
    * initializeEnvironment
@@ -23,7 +24,8 @@ export class EnvUtil {
     if (request.status !== 200) {
       location.reload();
     }
-    const yaml = jsyaml.loadAll(request.responseText);
+
+    const yaml = jsyaml.safeLoadAll(request.responseText);
     EnvUtil.env = yaml ? yaml[0] : yaml;
   }
 }

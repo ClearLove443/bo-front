@@ -1,0 +1,20 @@
+<div>
+  <span class="bst-header-icon">
+    <i nz-icon nzType="search" nzTheme="outline"></i>
+  </span>
+  <span class="bst-header-icon"><i nz-icon nzType="question-circle" nzTheme="outline"></i></span>
+  <span class="bst-header-icon">
+    <nz-badge [nzCount]="11" class="bst-badge">
+      <i nz-icon nzType="bell" nzTheme="outline"></i>
+    </nz-badge>
+  </span>
+  <span class="bst-header-icon" nz-dropdown [nzDropdownMenu]="menu" nzPlacement="bottomRight"><i nz-icon nzType="user"
+      nzTheme="outline"></i></span>
+</div>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item (click)="logout()">Logout</li>
+    <li nz-menu-item>Account info</li>
+    <li nz-menu-item>Setting</li>
+  </ul>
+</nz-dropdown-menu>

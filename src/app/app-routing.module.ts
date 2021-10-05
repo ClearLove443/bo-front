@@ -1,30 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RouterGuardService } from './service/router-guard.service';
-import { MeunComponent } from './sidebar/meun/meun.component';
+import { DashboardLayoutsComponent } from './shared/layout/dahboard/dashboard-layouts.component';
 
 const routes: Routes = [
   {
     path: 'login',
     loadChildren: () =>
-      import('./session/session.module').then((m) => m.SessionModule),
+      import('./business/page/session/session.module').then(
+        (m) => m.SessionModule
+      ),
   },
-  // { path: '', pathMatch: 'full', redirectTo: '/welcome' },
-  // {
-  //   path: 'welcome',
-  //   loadChildren: () =>
-  //     import('./pages/welcome/welcome.module').then((m) => m.WelcomeModule),
-  // },
   {
     path: '',
-    component: MeunComponent,
+    component: DashboardLayoutsComponent,
     canActivate: [RouterGuardService],
     children: [
-      { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+      { path: '', redirectTo: '/system/home', pathMatch: 'full' },
       {
-        path: 'welcome',
+        path: 'system',
         loadChildren: () =>
-          import('./home/welcome/welcome.module').then((m) => m.WelcomeModule),
+          import('./business/page/dashboard/dashboard.module').then(
+            (m) => m.DashBoardModule
+          ),
+      },
+      {
+        path: 'member',
+        loadChildren: () =>
+          import('./business/page/member/member.module').then(
+            (m) => m.MemberModule
+          ),
       },
       // {
       //   path: 'system',

@@ -1,0 +1,204 @@
+<div nz-row [nzGutter]="24">
+  <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
+    <g2-card [loading]="(dashboardInfo | async)?.loading" [title]="title1" total="¥ 126,560" contentHeight="44px"
+      [action]="action1" [footer]="footer1" contentClass="g2-card__fixed">
+      <ng-template #title1>
+        {{ 'Dashboard.Sales'}}
+      </ng-template>
+      <ng-template #action1>
+        <nz-tooltip>
+          <i nz-tooltip [nzTooltipTitle]="'Dashboard.Description'" nz-icon nzType="info-circle"></i>
+        </nz-tooltip>
+      </ng-template>
+      <trend flag="up" style="margin-right: 16px;
+">
+        Same week ratio of the previous year
+        <span>12%</span>
+      </trend>
+      <trend flag="down">
+        Same day ratio of the previous year
+        <span>11%</span>
+      </trend>
+      <ng-template #footer1>
+        <p class="w-overhide">
+          sales/day
+          <span>¥12,423</span>
+        </p>
+      </ng-template>
+    </g2-card>
+  </div>
+  <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
+    <g2-card [loading]="(dashboardInfo | async)?.loading" [title]="title2" total="12,900" contentHeight="44px"
+      [action]="action2" [footer]="footer2">
+      <ng-template #title2>
+        {{ 'Dashboard.Visitor' }}
+      </ng-template>
+      <ng-template #action2>
+        <nz-tooltip>
+          <i nz-tooltip [nzTooltipTitle]="'Dashboard.Description'" nz-icon nzType="info-circle"></i>
+        </nz-tooltip>
+      </ng-template>
+      <g2-mini-area *ngIf="(dashboardInfo | async)?.visitData" color="#975FE4" height="46"
+        [data]="(dashboardInfo | async)?.visitData" class="g2-card__chartfixed"></g2-mini-area>
+      <ng-template #footer2>
+        <p>
+          {{ 'Dashboard.VisitorPerDay' }}
+          <span>12,423</span>
+        </p>
+      </ng-template>
+    </g2-card>
+  </div>
+  <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
+    <g2-card [loading]="(dashboardInfo | async)?.loading" [title]="title3" total="¥ 126,560" contentHeight="44px"
+      [action]="action3" [footer]="footer3">
+      <ng-template #title3>
+        Daily sales
+      </ng-template>
+      <ng-template #action3>
+        <nz-tooltip>
+          <i nz-tooltip [nzTooltipTitle]="'Dashboard.Description'" nz-icon nzType="info-circle"></i>
+        </nz-tooltip>
+      </ng-template>
+      <g2-mini-bar *ngIf="(dashboardInfo | async)?.visitData" height="46" [data]="(dashboardInfo | async)?.visitData"
+        class="g2-card__chartfixed"></g2-mini-bar>
+      <ng-template #footer3>
+        <p class="w-overhide">
+          Buyer rate
+          <span>80%</span>
+        </p>
+      </ng-template>
+    </g2-card>
+  </div>
+  <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="6">
+    <g2-card [loading]="(dashboardInfo | async)?.loading" [title]="title4"
+      total="{{ (dashboardInfo | async)?.totalSalePercent }}%" contentHeight="44px" [action]="action4"
+      [footer]="footer4">
+      <ng-template #title4>
+        Upper ratio
+      </ng-template>
+      <ng-template #action4>
+        <nz-tooltip>
+          <i nz-tooltip [nzTooltipTitle]="'Dashboard.Description'" nz-icon nzType="info-circle"></i>
+        </nz-tooltip>
+      </ng-template>
+      <g2-mini-progress height="46" target="80" percent="{{ (dashboardInfo | async)?.totalSalePercent }}"
+        strokeWidth="10" cls="g2-mini-progress g2-card__chart-progressfixed" strokeWidth="8" color="#13C2C2">
+      </g2-mini-progress>
+      <ng-template #footer4>
+        <p class="w-overhide">
+          <trend flag="up" style="margin-right: 16px;
+">
+            Same week ratio of the previous year
+            <span>12%</span>
+          </trend>
+          <trend flag="down">
+            Same day ratio of the previous year
+            <span>11%</span>
+          </trend>
+        </p>
+      </ng-template>
+    </g2-card>
+  </div>
+</div>
+<nz-card [nzLoading]="(dashboardInfo | async)?.loading2" [nzBordered]="false"
+  [ngClass]="{ 'ant-card__body-nopadding': !(dashboardInfo | async)?.loading }">
+  <nz-tabset nzSize="large" style="margin-bottom: 24px;padding-left:16px
+" (nzSelectChange)="saleTabChange($event)">
+    <nz-tab nzTitle="Upper height">
+      <div nz-row [nzGutter]="24">
+        <div nz-col nzXl="16" nzXs="24" nzSm="24" nzMd="24" nzLg="24">
+          <div style="padding:16px
+">
+            <h4><span>Trafficking trend</span></h4>
+            <g2-mini-bar axis="true" *ngIf="!(dashboardInfo | async)?.loading2" height="254" barWidth="40"
+              [padding]="[32, 32, 32, 50]" [data]="(dashboardInfo | async)?.saleTrendData">
+            </g2-mini-bar>
+          </div>
+        </div>
+        <div nz-col nzXl="8" nzXs="24" nzSm="24" nzMd="24" nzLg="24">
+          <div class="salesRank">
+            <h4><span>Store sales ranking</span></h4>
+            <ul class="rankingList">
+              <li>
+                <span class="rankingItemNumber active">1</span><span class="rankingItemTitle"
+                  title="Qidong No. 0 store">Qidong No. 0 store</span><span>323,234</span>
+              </li>
+              <li>
+                <span class="rankingItemNumber active">2</span><span class="rankingItemTitle"
+                  title="Qidong No. 1 store">Qidong No. 1 store</span><span>323,234</span>
+              </li>
+              <li>
+                <span class="rankingItemNumber active">3</span><span class="rankingItemTitle"
+                  title="Qidong No. 2 store">Qidong No. 2 store</span><span>323,234</span>
+              </li>
+              <li>
+                <span class="rankingItemNumber ">4</span><span class="rankingItemTitle"
+                  title="Qidong No. 3 store">Qidong No. 3 store</span><span>323,234</span>
+              </li>
+              <li>
+                <span class="rankingItemNumber ">5</span><span class="rankingItemTitle"
+                  title="Qidong No. 4 store">Qidong No. 4 store</span><span>323,234</span>
+              </li>
+              <li>
+                <span class="rankingItemNumber ">6</span><span class="rankingItemTitle"
+                  title="Qidong No. 5 store">Qidong No. 5 store</span><span>323,234</span>
+              </li>
+              <li>
+                <span class="rankingItemNumber ">7</span><span class="rankingItemTitle"
+                  title="Qidong No. 6 store">Qidong No. 6 store</span><span>323,234</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nz-tab>
+    <nz-tab nzTitle="Number of visitors">
+      <div nz-row [nzGutter]="24">
+        <div nz-col nzXl="16" nzXs="24" nzSm="24" nzMd="24" nzLg="24">
+          <div style="padding:16px;
+">
+            <h4><span>Visitor trends</span></h4>
+            <g2-mini-bar axis="true" *ngIf="!(dashboardInfo | async)?.loading2" height="254" barWidth="40"
+              [padding]="[32, 32, 32, 50]" [data]="(dashboardInfo | async)?.saleTrendData">
+            </g2-mini-bar>
+          </div>
+        </div>
+        <div nz-col nzXl="8" nzXs="24" nzSm="24" nzMd="24" nzLg="24">
+          <div class="salesRank">
+            <h4><span>Entry ranking</span></h4>
+            <ul class="rankingList">
+              <li>
+                <span class="rankingItemNumber active">1</span><span class="rankingItemTitle"
+                  title="Qidong No. 0 store">Qidong No. 0 store</span><span>323,234</span>
+              </li>
+              <li>
+                <span class="rankingItemNumber active">2</span><span class="rankingItemTitle"
+                  title="Qidong No. 1 store">Qidong No. 1 store</span><span>323,234</span>
+              </li>
+              <li>
+                <span class="rankingItemNumber active">3</span><span class="rankingItemTitle"
+                  title="Qidong No. 2 store">Qidong No. 2 store</span><span>323,234</span>
+              </li>
+              <li>
+                <span class="rankingItemNumber ">4</span><span class="rankingItemTitle"
+                  title="Qidong No. 3 store">Qidong No. 3 store</span><span>323,234</span>
+              </li>
+              <li>
+                <span class="rankingItemNumber ">5</span><span class="rankingItemTitle"
+                  title="Qidong No. 4 store">Qidong No. 4 store</span><span>323,234</span>
+              </li>
+              <li>
+                <span class="rankingItemNumber ">6</span><span class="rankingItemTitle"
+                  title="Qidong No. 5 store">Qidong No. 5 store</span><span>323,234</span>
+              </li>
+              <li>
+                <span class="rankingItemNumber ">7</span><span class="rankingItemTitle"
+                  title="Qidong No. 6 store">Qidong No. 6 store</span><span>323,234</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nz-tab>
+  </nz-tabset>
+</nz-card>

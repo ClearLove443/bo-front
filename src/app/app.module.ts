@@ -19,10 +19,13 @@ import {
   DEFAULT_HTTP_TIMEOUT,
   WebAppHttpInterceptor,
 } from './service/http-interceptor';
-import { MeunComponent } from './sidebar/meun/meun.component';
+import { DashboardLayoutsComponent } from './shared/layout/dahboard/dashboard-layouts.component';
+import { FooterComponent } from './shared/layout/footer/footer.component';
+import { HeaderComponent } from './shared/layout/header/header.component';
+import { ReuseTabComponent } from './shared/layout/reuse-tab/reuse-tab.component';
+import { SidebarComponent } from './shared/layout/sidebar/sidebar.component';
 EnvUtil.initializeEnvironment();
 console.log(EnvUtil.env);
-
 if (!EnvUtil.env.production) {
   akitaDevtools();
 }
@@ -33,9 +36,13 @@ const antDesignIcons = AllIcons as {
 const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
   (key) => antDesignIcons[key]
 );
-
-const LAYOUT_COMPONENT = [MeunComponent];
-
+const LAYOUT_COMPONENT = [
+  DashboardLayoutsComponent,
+  HeaderComponent,
+  SidebarComponent,
+  ReuseTabComponent,
+  FooterComponent,
+];
 @NgModule({
   declarations: [AppComponent, ...LAYOUT_COMPONENT],
   imports: [
