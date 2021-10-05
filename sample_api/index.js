@@ -84,7 +84,7 @@ const menuItem = [
   },
   {
     label: "member",
-    icon: "member",
+    // icon: "member",
     isGroup: true,
     module: "",
     children: [
@@ -106,7 +106,7 @@ const menuItem = [
     children: [
       {
         label: "map",
-        module: "/examples/map",
+        module: "/member/map",
       },
     ],
   },

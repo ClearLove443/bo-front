@@ -1,0 +1,65 @@
+<form nz-form [formGroup]="memberForm">
+  <div padding>
+  </div>
+
+  <nz-form-item>
+    <nz-form-label position="floating">name</nz-form-label>
+    <nz-form-control><input nz-input formControlName="name" id="name" /></nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label position="floating">bankName</nz-form-label>
+    <nz-form-control><input nz-input formControlName="bankName" id="bankName" /></nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label position="floating">bankCode</nz-form-label>
+    <nz-form-control><input nz-input formControlName="bankCode" id="bankCode" /></nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label position="floating">branchName</nz-form-label>
+    <nz-select formControlName="branchName" nzAllowClear nzPlaceHolder="please choose one branch">
+      <nz-option nzValue="branchName1" nzLabel="branchName1"></nz-option>
+      <nz-option nzValue="branchName2" nzLabel="branchName2"></nz-option>
+      <nz-option nzValue="branchName3" nzLabel="branchName3"></nz-option>
+      <nz-option nzValue="branchName4" nzLabel="branchName4"></nz-option>
+    </nz-select>
+  </nz-form-item>
+  <nz-form-item>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label position="floating">accountNo</nz-form-label>
+    <nz-form-control><input nz-input formControlName="accountNo" id="accountNo" /></nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label position="floating">accountType</nz-form-label>
+    <nz-select formControlName="accountType" nzAllowClear nzPlaceHolder="please choose one accountType">
+      <nz-option *ngFor="let accountType of accountTypes | keyvalue" nzLabel="{{ accountType.value }}"
+        nzValue="{{ accountType.value }}"></nz-option>
+    </nz-select>
+  </nz-form-item>
+  <nz-form-item>
+
+  </nz-form-item>
+</form>
+
+<div *nzModalFooter>
+  <button nz-button nzType="default" (click)="dismiss()" [nzLoading]="isOperating | async">
+    Cancel
+  </button>
+  <button nz-button nzType="primary" (click)="addMember()" [nzLoading]="isOperating | async">
+    OK
+  </button>
+</div>

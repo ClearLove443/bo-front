@@ -26,7 +26,8 @@ export class WebAppGlobalErrorHandler implements ErrorHandler {
    * @memberof GlobalErrorHandler
    */
   handleError(error: any): void {
-    // alert('222' + JSON.stringify(error));
+    console.error('222' + error);
+    alert('222' + error);
     // var loggerService = this.injector.get(LoggerService);
     // var translate = this.injector.get(TranslateService);
     // // Promise rejection

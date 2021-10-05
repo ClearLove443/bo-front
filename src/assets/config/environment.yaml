@@ -3,6 +3,7 @@ production: false
 apiUrl:
   auth: "http://localhost:3000/auth"
   address: "http://localhost:3000/address"
+  member: "http://localhost:3000/address"
   charts: "http://localhost:3000/charts"
   chat: "http://localhost:3000/chat"
 

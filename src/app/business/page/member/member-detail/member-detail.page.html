@@ -1,0 +1,55 @@
+<nz-list *ngIf="member">
+  <nz-list-item>
+    <nz-list-item-meta [nzTitle]="name" nzDescription="{{member.name}}">
+      <ng-template #name>
+        name
+      </ng-template>
+    </nz-list-item-meta>
+  </nz-list-item>
+
+  <nz-list-item>
+    <nz-list-item-meta [nzTitle]="bankName" nzDescription="{{member.bankName}}">
+      <ng-template #bankName>
+        bankName
+      </ng-template>
+    </nz-list-item-meta>
+  </nz-list-item>
+
+  <nz-list-item>
+    <nz-list-item-meta [nzTitle]="bankName" nzDescription="{{member.bankCode}}">
+      <ng-template #bankCode>
+        bankName
+      </ng-template>
+    </nz-list-item-meta>
+  </nz-list-item>
+
+  <nz-list-item>
+    <nz-list-item-meta [nzTitle]="branchName" nzDescription="{{member.branchName}}">
+      <ng-template #branchName>
+        branchName
+      </ng-template>
+    </nz-list-item-meta>
+  </nz-list-item>
+
+  <nz-list-item>
+    <nz-list-item-meta [nzTitle]="accountNo" nzDescription="{{member.accountNo}}">
+      <ng-template #accountNo>
+        accountNo
+      </ng-template>
+    </nz-list-item-meta>
+  </nz-list-item>
+
+  <nz-list-item>
+    <nz-list-item-meta [nzTitle]="accountType" nzDescription="{{member.accountType}}">
+      <ng-template #accountType>
+        accountType
+      </ng-template>
+    </nz-list-item-meta>
+  </nz-list-item>
+</nz-list>
+
+<div *nzModalFooter>
+  <button nz-button nzType="default" (click)="dismiss()">
+    Cancel
+  </button>
+</div>

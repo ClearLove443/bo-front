@@ -1,25 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps';
 import { RouterModule, Routes } from '@angular/router';
-import { InfoComponent } from './info/info.component';
-import { ListComponent } from './list/list.component';
-import { RegisterComponent } from './register/register.component';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NgZorroAntdModule } from 'src/app/ng-zorro-antd.module';
+import { MapComponent } from './map/map.component';
+import { MemberAddPage } from './member-add/member-add.page';
+import { MemberDetailPage } from './member-detail/member-detail.page';
+import { MemberListPage } from './member-list/member-list.page';
 import { SearchComponent } from './search/search.component';
-
 const routes: Routes = [
   {
-    path: 'register',
-    component: RegisterComponent,
-    data: { title: 'register', reuse: true },
-  },
-  {
-    path: 'info',
-    component: InfoComponent,
-    data: { title: 'info', reuse: true },
-  },
-  {
     path: 'list',
-    component: ListComponent,
+    component: MemberListPage,
     data: { title: 'list', reuse: true },
   },
   {
@@ -27,10 +21,24 @@ const routes: Routes = [
     component: SearchComponent,
     data: { title: 'search', reuse: true },
   },
+  {
+    path: 'map',
+    component: MapComponent,
+    data: { title: 'map', reuse: true },
+  },
 ];
 
 @NgModule({
-  declarations: [RegisterComponent, InfoComponent, SearchComponent],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  declarations: [MapComponent, MemberListPage, MemberAddPage, MemberDetailPage],
+  imports: [
+    NzModalModule,
+    ReactiveFormsModule,
+    FormsModule,
+    GoogleMapsModule,
+    CommonModule,
+    NgZorroAntdModule,
+    GoogleMapsModule,
+    RouterModule.forChild(routes),
+  ],
 })
 export class MemberModule {}

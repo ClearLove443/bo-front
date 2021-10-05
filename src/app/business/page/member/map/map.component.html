@@ -1,0 +1,6 @@
+<google-map height="500px" width="500px" [center]="center" [zoom]="zoom" [options]="options">
+  <map-marker #marker="mapMarker" *ngFor="let office of acJPOfficeMarkers" [position]="office.position"
+    [options]="office" [title]="office.name" (mapClick)="openInfoWindow(marker)"></map-marker>
+
+  <map-info-window>{{ selectedPlace }}</map-info-window>
+</google-map>

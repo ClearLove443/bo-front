@@ -10,6 +10,7 @@ export interface IEnvironment {
   apiUrl: {
     auth: string;
     address: string;
+    member: string;
     charts: string;
     chat: string;
   };

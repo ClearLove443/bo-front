@@ -1,0 +1,46 @@
+<nz-card [nzBordered]="false">
+  <div class="operate">
+    <button nz-button [nzType]="'primary'" [nzLoading]="isOperating | async" (click)="addData()">
+      Add
+    </button>
+    <button nz-button [disabled]="numberOfChecked === 0" nzType="primary" nzDanger [nzLoading]="isOperating | async"
+      (click)="deleteData()">
+      Delete
+    </button>
+    <span *ngIf="numberOfChecked">Selected {{ numberOfChecked }} items</span>
+  </div>
+  <nz-table #rowSelectionTable nzShowPagination nzShowSizeChanger [nzData]="(listOfAllData | async)!"
+    (nzCurrentPageDataChange)="currentPageDataChange($event)" [nzLoading]="isOperating | async">
+    <thead>
+      <tr>
+        <th nzShowCheckbox [(nzChecked)]="isAllDisplayDataChecked" [nzIndeterminate]="isIndeterminate"
+          (nzCheckedChange)="checkAll($event)"></th>
+        <th>name</th>
+        <th>bankName</th>
+        <th>branchName</th>
+        <th>accountNo</th>
+        <th>accountType</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of rowSelectionTable.data">
+        <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" [nzDisabled]="data.disabled"
+          (nzCheckedChange)="refreshStatus()"></td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.bankName }}</td>
+        <td>{{ data.branchName }}</td>
+        <td>{{ data.accountNo }}</td>
+        <td>{{ data.accountType }}</td>
+        <td>
+          <button nz-button [nzType]="'default'" (click)="detailData(data)">
+            Detail
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>
+<ng-template #indicatorTemplate>
+  <i nz-icon nzType="loading" style="font-size: 24px;"></i>
+</ng-template>

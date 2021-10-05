@@ -32,13 +32,6 @@ const routes: Routes = [
           ),
       },
       // {
-      //   path: 'system',
-      //   loadChildren: () =>
-      //     import('../business/pages/dashboard/dashboard.module').then(
-      //       (m) => m.DashboardModule
-      //     ),
-      // },
-      // {
       //   path: 'exception',
       //   loadChildren: () =>
       //     import('./pages/exception/exception.module').then(
