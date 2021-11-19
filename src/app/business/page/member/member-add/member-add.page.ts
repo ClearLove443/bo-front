@@ -86,4 +86,24 @@ export class MemberAddPage implements OnInit {
   public dismiss(): void {
     this.modalCtrl.close();
   }
+  public flat(
+    obj: Object,
+    key = '',
+    res: { [x: string]: unknown } = {},
+    isArray = false
+  ) {
+    for (let [k, v] of Object.entries(obj)) {
+      if (Array.isArray(v)) {
+        let tmp = isArray ? key + '[' + k + ']' : key + k;
+        this.flat(v, tmp, res, true);
+      } else if (typeof v === 'object') {
+        let tmp = isArray ? key + '[' + k + '].' : key + k + '.';
+        this.flat(v, tmp, res);
+      } else {
+        let tmp = isArray ? key + '[' + k + ']' : key + k;
+        res[tmp] = v;
+      }
+    }
+    return res;
+  }
 }
