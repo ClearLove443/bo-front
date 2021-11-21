@@ -34,12 +34,11 @@ const authedToken = [];
 
 const isAuth = (req, res) => {
   if (
-    !req.headers["x-chatworks-auth"] ||
-    authedToken.indexOf(req.headers["x-chatworks-auth"]) < 0
+    !req.headers.authorization ||
+    authedToken.indexOf(req.headers.authorization) < 0
   ) {
-    res.status(500).send({
-      message: "Auth error!",
-      code: "999",
+    return res.status(500).send({
+      global: [{ message: "Auth error!", code: 999 }],
     });
     return false;
   }
@@ -51,17 +50,22 @@ app.post("/auth/login", (req, res) => {
   console.log(JSON.stringify(user));
   if (!user || !user.password || user.password !== "password") {
     return res.status(400).send({
-      message: "Auth error!",
-      code: "999",
+      global: [{ message: "Auth error!", code: 999 }],
     });
   }
 
-  const id = uuidv4();
-  authedToken.push(id);
+  const uuid = uuidv4();
+  const accessToken = uuidv4();
+  const refreshToken = uuidv4();
+
+  authedToken.push(accessToken);
 
   const result = Mock.mock({
-    token: id,
-    userName: "admin",
+    uuid: uuid,
+    accessToken: accessToken,
+    firstName: "admin",
+    lastName: "admin",
+    refreshToken: refreshToken,
     roles: ["role1", "role2", "role3"],
   });
 
