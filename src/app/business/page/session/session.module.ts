@@ -8,9 +8,11 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NgZorroAntdModule } from 'src/app/ng-zorro-antd.module';
 import { LoginComponent } from './login/login.component';
-const routes: Routes = [{ path: '', component: LoginComponent }];
+import { Login2Component } from './login2/login2.component';
+// const routes: Routes = [{ path: '', component: LoginComponent }];
+const routes: Routes = [{ path: '', component: Login2Component }];
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, Login2Component],
   imports: [
     CommonModule,
     NzInputModule,
@@ -21,7 +23,8 @@ const routes: Routes = [{ path: '', component: LoginComponent }];
     HttpClientModule,
     FormsModule,
     RouterModule.forChild(routes),
+    // BrowserAnimationsModule,
   ],
-  exports: [LoginComponent],
+  exports: [LoginComponent, Login2Component],
 })
 export class SessionModule {}

@@ -1,12 +1,17 @@
+<div padding>
+  <global-error-message [form]="memberForm" lines="none" [@accordion]></global-error-message>
+</div>
 <form nz-form [formGroup]="memberForm">
   <div padding>
   </div>
 
   <nz-form-item>
     <nz-form-label position="floating">name</nz-form-label>
-    <nz-form-control><input nz-input formControlName="name" id="name" /></nz-form-control>
+    <nz-form-control><input nz-input formControlName="name" id="name" minlength="2" maxlength="3" /></nz-form-control>
   </nz-form-item>
+
   <nz-form-item>
+    <validation-messages minHeight [control]="memberForm.controls['name']" [fieldName]="'name'"></validation-messages>
   </nz-form-item>
 
   <nz-form-item>

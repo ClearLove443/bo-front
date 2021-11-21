@@ -1,7 +1,7 @@
 <nz-card [nzBordered]="false">
   <div class="operate">
     <button nz-button [nzType]="'primary'" [nzLoading]="isOperating | async" (click)="addData()">
-      Add
+      {{'Button.ADD' | translate}}
     </button>
     <button nz-button [disabled]="numberOfChecked === 0" nzType="primary" nzDanger [nzLoading]="isOperating | async"
       (click)="deleteData()">

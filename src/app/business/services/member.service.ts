@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { catchError, delay } from 'rxjs/operators';
+import { BaseService } from 'src/app/core/abstract/base.service';
 import { EnvUtil } from 'src/environments/environment';
 import { createMember, Member, MemberStore } from '../states/member.store';
 
@@ -14,11 +15,13 @@ import { createMember, Member, MemberStore } from '../states/member.store';
 @Injectable({
   providedIn: 'root',
 })
-export class MemberService {
+export class MemberService extends BaseService {
   constructor(
     private httpClient: HttpClient,
     private memberStore: MemberStore
-  ) {}
+  ) {
+    super();
+  }
 
   /**
    * subscribe websocket server
@@ -26,15 +29,12 @@ export class MemberService {
    * @memberof MemberService
    */
   public getMemberList(): void {
-    // this.initializeLoadingState(this.memberStore);
-    this.memberStore.setLoading(true);
+    this.initializeLoadingState(this.memberStore);
+    // this.memberStore.setLoading(true);
     this.httpClient
       .get<Array<Member>>(EnvUtil.env.apiUrl.member + '/list')
-      .pipe(
-        // catchError(this.handleError(this.memberStore)),
-        delay(2000)
-      )
-      .subscribe((memberList: Array<Member>) => {
+      .pipe(catchError(this.handleError(true, this.memberStore)), delay(2000))
+      .subscribe((memberList: Array<Member> | any) => {
         this.memberStore.set(memberList);
         this.memberStore.setLoading(false);
       });
@@ -76,8 +76,8 @@ export class MemberService {
     });
 
     return new Observable((observer: Observer<boolean>) => {
-      // this.initializeLoadingState(this.memberStore);
-      this.memberStore.setLoading(true);
+      this.initializeLoadingState(this.memberStore);
+      // this.memberStore.setLoading(true);
       this.httpClient
         .post(EnvUtil.env.apiUrl.member + '/add', member)
         .pipe(delay(2000))
@@ -87,7 +87,7 @@ export class MemberService {
             observer.next(true);
           },
           (error) => {
-            // this.handleError(this.memberStore, true)(error);
+            this.handleError(true, this.memberStore)(error);
             observer.next(false);
           }
         );
@@ -101,14 +101,11 @@ export class MemberService {
    * @memberof MemberService
    */
   public deleteMember(id: string): void {
-    // this.initializeLoadingState(this.memberStore);
-    this.memberStore.setLoading(true);
+    this.initializeLoadingState(this.memberStore);
+    // this.memberStore.setLoading(true);
     this.httpClient
       .delete(EnvUtil.env.apiUrl.member + `/item/${id}`)
-      .pipe(
-        // catchError(this.handleError(this.memberStore)),
-        delay(1000)
-      )
+      .pipe(catchError(this.handleError(true, this.memberStore)), delay(1000))
       .subscribe(() => {
         this.getMemberList();
       });

@@ -1,5 +1,6 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { TranslateService } from '@ngx-translate/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { MemberQuery } from 'src/app/business/queries/member.query';
 import { MemberService } from 'src/app/business/services/member.service';
@@ -25,7 +26,8 @@ export class MemberListPage implements OnInit {
     private modalService: NzModalService,
     private memberService: MemberService,
     private memberQuery: MemberQuery,
-    injector: Injector
+    injector: Injector,
+    public translate: TranslateService
   ) {}
 
   /**
