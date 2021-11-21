@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
 
-export interface PlatformCoreState {
-  key: string;
-}
-
 export interface MenuItem {
   module: string;
   children: Array<MenuItem>;
