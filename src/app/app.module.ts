@@ -1,5 +1,9 @@
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import en from '@angular/common/locales/en';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -8,11 +12,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { akitaDevtools } from '@datorama/akita';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { en_US, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
 import { EnvUtil } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TranslateYamlLoader } from './core/translate/translate-yaml-loader';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { WebAppGlobalErrorHandler } from './service/error-handler';
 import {
@@ -43,6 +49,18 @@ const LAYOUT_COMPONENT = [
   ReuseTabComponent,
   FooterComponent,
 ];
+/**
+ * Adds prefixes to TranslateYamlLoader default value
+ *
+ * @export
+ * @param {HttpClient} http
+ * @returns {TranslateYamlLoader}
+ */
+export function TranslateYamlLoaderFactory(
+  http: HttpClient
+): TranslateYamlLoader {
+  return new TranslateYamlLoader(http);
+}
 @NgModule({
   declarations: [AppComponent, ...LAYOUT_COMPONENT],
   imports: [
@@ -52,6 +70,13 @@ const LAYOUT_COMPONENT = [
     HttpClientModule,
     BrowserAnimationsModule,
     NgZorroAntdModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: TranslateYamlLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },
