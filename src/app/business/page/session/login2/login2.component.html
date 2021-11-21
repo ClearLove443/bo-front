@@ -1,0 +1,60 @@
+<body>
+  <!-- <span #tref>I am span</span> -->
+  <!-- <div class='brand'>
+    <a href='https://www.jamiecoulter.co.uk' target='_blank'>
+      <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/logo.png'>
+    </a>
+  </div> -->
+  <div class='login' #loginel [ngClass]="{'test': addtest, 'testtwo' : addtesttwo }">
+    <div class='login_title' *ngIf="!successshow && !failshow">
+      <span>Login to your account</span>
+    </div>
+    <div class='login_fields' *ngIf="!successshow && !failshow">
+      <div class='login_fields__user'>
+        <div class='icon'>
+          <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>
+        </div>
+        <input placeholder='Username' type='text' [(ngModel)]="username" />
+        <div class='validation'>
+          <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>
+        </div>
+      </div>
+      <div class='login_fields__password'>
+        <div class='icon'>
+          <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>
+        </div>
+        <input placeholder='Password' type='password' [(ngModel)]="password" />
+        <div class='validation'>
+          <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>
+        </div>
+      </div>
+      <div class='login_fields__submit'>
+        <input type='submit' value='Log In' (click)="login()">
+        <!-- <div class='forgot'>
+          <a href='#'>Forgotten password?</a>
+        </div> -->
+      </div>
+    </div>
+    <div class='success' *ngIf="successshow" @fadeIn @fadeOut>
+      <h2>Authentication Success</h2>
+      <p>Welcome back</p>
+    </div>
+
+    <div class='fail' *ngIf="failshow" @fadeIn @fadeOut>
+      <h2>Authentication Fail</h2>
+    </div>
+    <!-- <div class='disclaimer' *ngIf="!successshow && !failshow">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper laoreet placerat. Nullam semper auctor
+        justo, rutrum posuere odio vulputate nec.</p>
+    </div> -->
+  </div>
+  <!-- <div class='authent' [hidden]="!authentshow" #authentel [ngStyle]="{opacity: authentshow ? '1' : '0'}"> -->
+  <div class='authent' *ngIf="authentshow">
+    <img src='assets/puff.svg'>
+    <p>Authenticating...</p>
+  </div>
+  <!-- <div class='love'>
+    <p>Made with <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/love_copy.png" /> by <a
+        href='https://www.jamiecoulter.co.uk' target='_blank'> Jcoulterdesign </a></p>
+  </div> -->
+</body>
