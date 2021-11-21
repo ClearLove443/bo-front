@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { catchError, delay } from 'rxjs/operators';
+import { BaseService } from 'src/app/core/abstract/base.service';
 import { EnvUtil } from 'src/environments/environment';
 import { MenuItem, PlatformCoreStore } from '../states/platform-core.store';
 /**
@@ -12,11 +13,13 @@ import { MenuItem, PlatformCoreStore } from '../states/platform-core.store';
  */
 
 @Injectable({ providedIn: 'root' })
-export class PlatformCoreService {
+export class PlatformCoreService extends BaseService {
   constructor(
     private platformCoreStore: PlatformCoreStore,
     private http: HttpClient
-  ) {}
+  ) {
+    super();
+  }
 
   /**
    * getDesktop
@@ -52,7 +55,7 @@ export class PlatformCoreService {
     this.http
       .get<{ data: Array<MenuItem> }>(serviceRootUrl + '/meun')
       .pipe(delay(2000))
-      .subscribe((result) => {
+      .subscribe((result: { data: Array<MenuItem> }) => {
         this.platformCoreStore.update({
           menuItem: result.data,
         });
@@ -86,11 +89,25 @@ export class PlatformCoreService {
         .post<{ token: string }>(serviceRootUrl + '/login', {
           password: password,
         })
-        .subscribe((res) => {
-          const token = res.token;
-          localStorage.setItem('token', token);
-          observer.next(true);
-        });
+        .pipe(
+          // catchError((error) => {
+          //   console.error('ServiceCatchError', error);
+          //   throw error;
+          // })
+          catchError(this.handleError(true))
+        )
+        .subscribe(
+          (res: any) => {
+            const accessToken = res.accessToken;
+            localStorage.setItem('token', accessToken);
+            observer.next(true);
+          },
+          (error) => {
+            console.error('ServiceSubscribe', error);
+            observer.next(false);
+            throw error;
+          }
+        );
     });
   }
 
