@@ -1,0 +1,15 @@
+<div validationMessageBox>
+  <div *ngIf="errorMessages.length || successMessage">
+    <div failMessage *ngFor="let errorMessage of errorMessages">
+      <div [innerHtml]="errorMessage"></div>
+    </div>
+    <div successMessage>
+      <div [innerHtml]="successMessage"></div>
+    </div>
+  </div>
+  <div
+    [class.no-blank-space]="!blankSpace"
+    validationMessagePlaceHolder
+    *ngIf="!errorMessages.length && !successMessage"
+  ></div>
+</div>

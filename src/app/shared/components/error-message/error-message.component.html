@@ -1,0 +1,18 @@
+<div
+  *ngIf="errorMessageIsShown"
+  button
+  errorMessageBox
+  [attr.minHeight]="blankSpace ? '' : null"
+>
+  <i nz-icon nzType="exclamation-circle" nzTheme="outline"></i>
+  <p>
+    <ng-content select="[title]"></ng-content>
+    <ng-content select="[body]"></ng-content>
+    <ng-content select="[linkButton]"></ng-content>
+  </p>
+  <i nz-icon nzType="close-circle" nzTheme="outline"></i>
+</div>
+<div
+  *ngIf="!errorMessageIsShown && blankSpace === true"
+  errorMessagePlaceHolderSpace
+></div>

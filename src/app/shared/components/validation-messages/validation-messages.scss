@@ -1,0 +1,35 @@
+@import '../../../scss/app.scss';
+
+// Validation Messages
+
+// 設定
+$validationMessage: 'validationMessage';
+$validationPlaceHolderSpace: 14px;
+
+[#{$validationMessage}Box] {
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 0;
+  line-height: 14px;
+  @include font($font-family: $hiragino-font-3, $size: $font-size-small);
+
+  [failMessage] {
+    color: $danger;
+  }
+
+  [successMessage] {
+    color: $success;
+  }
+
+  [hintMessage] {
+    color: $hint;
+  }
+
+  [validationMessagePlaceHolder] {
+    height: #{$validationPlaceHolderSpace};
+
+    &.no-blank-space {
+      height: auto;
+    }
+  }
+}
