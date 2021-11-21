@@ -1,0 +1,38 @@
+Button:
+  OK: OK
+  YES: YES
+  NO: NO
+  CLOSE: 閉じる
+  CANCEL: キャンセル
+  ADD: 追加
+Dashboard:
+  Description: 説明をここに入れます
+  Sales: 総売上
+  Visitor: 訪問数
+  VisitorPerDay: 訪問数/日
+SubScreen:
+  kaisha: 会社
+  busho: 部署
+  jidouFurikaeBusho: 自動振替部署
+  kanriBlock: 管理ブロック
+  shikuchoson: 市区町村CD
+  ginko: 銀行
+Field:
+  kaishaCode: 会社コード
+  bushoCode: 部署コード
+  tekiyoYmdFrom: 適用開始日
+  tekiyoYmdTo: 適用終了日
+  jidouFurikaeBushoCode: 自動振替部署
+  kanriBlock: 管理ブロック
+  tenpoStaffKbn: 店舗スタッフ区分
+  henkoKbn: 変更区分
+  henkoYmd: 変更年月日
+  kaitenKaisetsuYmd: 開店開設年月日
+  shozaichi: 所在地
+  yubinBango: 郵便番号
+  denwaBango: 電話番号
+  ginkoCode: 銀行コード
+  shitenCode: 支店コード
+  kozaBango: 口座番号
+  kozaMeigininKana: 口座名義人(カナ)
+  kozaMeigininKanji: 口座名義人(漢字)

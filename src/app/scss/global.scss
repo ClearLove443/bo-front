@@ -1,0 +1,45 @@
+@import './variables.scss';
+@import './fonts.scss';
+
+* {
+  font-family: #{$base-font};
+}
+
+.to-edge {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.full-screen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.full {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.margin-left-10 {
+  margin-left: 10px;
+}
+
+.ant-card__body-nopadding {
+  .ant-card-body {
+    padding: 0 !important;
+  }
+}
+
+.w-overhide {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

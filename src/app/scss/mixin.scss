@@ -1,0 +1,102 @@
+// font
+// default $base-font 16px normal
+// use example: @include font(10px), font(normal)
+@mixin font($font-family: $base-font, $size: 16px, $weight: normal) {
+  font-weight: $weight;
+  font-size: $size;
+  font-family: $font-family;
+}
+
+// radius
+// default 4px
+// use example: @include border-radius(10px)
+@mixin border-radius($radius: 4px) {
+  -webkit-border-radius: $radius !important;
+  -moz-border-radius: $radius !important;
+  -ms-border-radius: $radius !important;
+  border-radius: $radius !important;
+}
+
+// border
+// default 1px solid light grey
+// use example: @include border($corner: top), @include border($corner: bottom, $width: 2px) etc...
+@mixin border(
+  $corner: null,
+  $width: 1px,
+  $style: solid,
+  $color: var(--ion-color-step-150)
+) {
+  @if $corner == null {
+    border: $width $style $color;
+  } @else {
+    border-#{$corner}: $width $style $color;
+  }
+}
+
+// opacity
+// default level 0.5
+@mixin opacity($opacity: 0.5) {
+  $IEValue: calc(#{$opacity} * 100);
+  opacity: $opacity;
+  -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + $IEValue +
+    ')';
+  filter: alpha(opacity=$IEValue);
+}
+
+// ellipsis
+@mixin ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+
+// keyframe
+@mixin keyframes($animation-name: animation) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+// animation
+@mixin animation($animation-name) {
+  -webkit-animation: $animation-name;
+  -moz-animation: $animation-name;
+  animation: $animation-name;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+// css3-prefix
+@mixin css3-prefix($prop, $value) {
+  -webkit-#{$prop}: #{$value};
+  -moz-#{$prop}: #{$value};
+  -ms-#{$prop}: #{$value};
+  -o-#{$prop}: #{$value};
+  #{$prop}: #{$value};
+}
+
+// absolute position
+@mixin absolute-position($top, $right, $bottom, $left) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+// text fixed custom style
+@mixin defineTextStyle() {
+  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  @include font($font-family: $hiragino-font-3, $size: $font-size-medium);
+}

@@ -1,0 +1,96 @@
+// Common Custom Fonts Should Be Set Here.
+$base-font: '-apple-system', 'BlinkMacSystemFont', 'system-ui',
+  'HiraginoSans-W5', 'Noto Sans', 'Noto Sans CJK JP', 'Roboto', 'Helvetica Neue',
+  sans-serif;
+
+// Font family
+$hiragino-font-1: '-apple-system', 'BlinkMacSystemFont', 'system-ui',
+  'HiraginoSans-W1', 'Noto Sans', 'Noto Sans CJK JP', 'Roboto', 'Helvetica Neue',
+  sans-serif;
+$hiragino-font-2: '-apple-system', 'BlinkMacSystemFont', 'system-ui',
+  'HiraginoSans-W2', 'Noto Sans', 'Noto Sans CJK JP', 'Roboto', 'Helvetica Neue',
+  sans-serif;
+$hiragino-font-3: '-apple-system', 'BlinkMacSystemFont', 'system-ui',
+  'HiraginoSans-W3', 'Noto Sans', 'Noto Sans CJK JP', 'Roboto', 'Helvetica Neue',
+  sans-serif;
+$hiragino-font-4: '-apple-system', 'BlinkMacSystemFont', 'system-ui',
+  'HiraginoSans-W4', 'Noto Sans', 'Noto Sans CJK JP', 'Roboto', 'Helvetica Neue',
+  sans-serif;
+$hiragino-font-5: '-apple-system', 'BlinkMacSystemFont', 'system-ui',
+  'HiraginoSans-W5', 'Noto Sans', 'Noto Sans CJK JP', 'Roboto', 'Helvetica Neue',
+  sans-serif;
+$hiragino-font-6: '-apple-system', 'BlinkMacSystemFont', 'system-ui',
+  'HiraginoSans-W6', 'Noto Sans', 'Noto Sans CJK JP', 'Roboto', 'Helvetica Neue',
+  sans-serif;
+$hiragino-font-7: '-apple-system', 'BlinkMacSystemFont', 'system-ui',
+  'HiraginoSans-W7', 'Noto Sans', 'Noto Sans CJK JP', 'Roboto', 'Helvetica Neue',
+  sans-serif;
+$hiragino-font-8: '-apple-system', 'BlinkMacSystemFont', 'system-ui',
+  'HiraginoSans-W8', 'Noto Sans', 'Noto Sans CJK JP', 'Roboto', 'Helvetica Neue',
+  sans-serif;
+$hiragino-font-9: '-apple-system', 'BlinkMacSystemFont', 'system-ui',
+  'HiraginoSans-W9', 'Noto Sans', 'Noto Sans CJK JP', 'Roboto', 'Helvetica Neue',
+  sans-serif;
+
+// Font size
+$font-size-small: 10px;
+$font-size-12: 12px;
+$font-size-14: 14px;
+$font-size-medium: 16px;
+$font-size-18: 18px;
+$font-size-20: 20px;
+$font-size-22: 22px;
+$font-size-large: 24px;
+$font-size-26: 26px;
+$font-size-28: 28px;
+$font-size-32: 32px;
+$font-size-48: 48px;
+$font-size-64: 64px;
+
+@mixin base-font-face() {
+  @font-face {
+    font-weight: 100;
+    font-family: 'HiraginoSans-W1';
+    src: local('HiraginoSans-W1'), local('Hiragino Sans');
+  }
+  @font-face {
+    font-weight: 200;
+    font-family: 'HiraginoSans-W2';
+    src: local('HiraginoSans-W2'), local('Hiragino Sans');
+  }
+  @font-face {
+    font-weight: 300;
+    font-family: 'HiraginoSans-W3';
+    src: local('HiraginoSans-W3'), local('Hiragino Sans');
+  }
+  @font-face {
+    font-weight: 400;
+    font-family: 'HiraginoSans-W4';
+    src: local('HiraginoSans-W4'), local('Hiragino Sans');
+  }
+  @font-face {
+    font-weight: 500;
+    font-family: 'HiraginoSans-W5';
+    src: local('HiraginoSans-W5'), local('Hiragino Sans');
+  }
+  @font-face {
+    font-weight: 600;
+    font-family: 'HiraginoSans-W6';
+    src: local('HiraginoSans-W6'), local('Hiragino Sans');
+  }
+  @font-face {
+    font-weight: 700;
+    font-family: 'HiraginoSans-W7';
+    src: local('HiraginoSans-W7'), local('Hiragino Sans');
+  }
+  @font-face {
+    font-weight: 800;
+    font-family: 'HiraginoSans-W8';
+    src: local('HiraginoSans-W8'), local('Hiragino Sans');
+  }
+  @font-face {
+    font-weight: 900;
+    font-family: 'HiraginoSans-W9';
+    src: local('HiraginoSans-W9'), local('Hiragino Sans');
+  }
+}
