@@ -139,7 +139,7 @@ export class ReuseTabComponent {
     const winWidth = document.body.offsetWidth;
     this.sidebarWidth = sw !== undefined ? sw : 256;
     const sidebarCollapsedWidth = 68;
-    const headerWidth = 180;
+    const headerWidth = 220;
     const menuDrapDownWidth = 38;
     const tabItemWidth = 96;
     const tabMaxWidth =

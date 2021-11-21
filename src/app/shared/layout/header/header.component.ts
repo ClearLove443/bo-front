@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { PlatformCoreService } from 'src/app/business/services/platform-core.service';
 
 /**
@@ -13,7 +14,12 @@ import { PlatformCoreService } from 'src/app/business/services/platform-core.ser
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  constructor(private platformCoreService: PlatformCoreService) {}
+  constructor(
+    private platformCoreService: PlatformCoreService,
+    public translate: TranslateService
+  ) {
+    translate.addLangs(['en', 'ja']);
+  }
 
   /**
    * logout
